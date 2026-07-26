@@ -14,7 +14,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/about", changefreq: "monthly", priority: "0.6" },
           { path: "/request", changefreq: "weekly", priority: "0.6" },
           { path: "/vote-maker", changefreq: "monthly", priority: "0.5" },
-          { path: "/status", changefreq: "hourly", priority: "0.5" },
         ];
         let apps: Awaited<ReturnType<typeof listAppsFn>> = [];
         try {
