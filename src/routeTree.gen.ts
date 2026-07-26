@@ -9,38 +9,339 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VoteMakerRouteImport } from './routes/vote-maker'
+import { Route as StatusRouteImport } from './routes/status'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as RequestRouteImport } from './routes/request'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as BroadcastRouteImport } from './routes/broadcast'
+import { Route as AddappsRouteImport } from './routes/addapps'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VoteIdRouteImport } from './routes/vote.$id'
+import { Route as StatusSetRouteImport } from './routes/status_.set'
+import { Route as RequestDataRouteImport } from './routes/request_.data'
+import { Route as AppsIdRouteImport } from './routes/apps.$id'
+import { Route as AppsIndexApplistDotjsonRouteImport } from './routes/apps.index.applist[.]json'
+import { Route as BroadcastsImageIdRouteImport } from './routes/broadcasts.image.$id'
+import { Route as AppsPreviewIdRouteImport } from './routes/apps.preview.$id'
+import { Route as AppsGypsB64RouteImport } from './routes/apps.gyps.$b64'
+import { Route as AppsIconFGJ01IdRouteImport } from './routes/apps.icon.FGJ01.$id'
 
+const VoteMakerRoute = VoteMakerRouteImport.update({
+  id: '/vote-maker',
+  path: '/vote-maker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestRoute = RequestRouteImport.update({
+  id: '/request',
+  path: '/request',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BroadcastRoute = BroadcastRouteImport.update({
+  id: '/broadcast',
+  path: '/broadcast',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddappsRoute = AddappsRouteImport.update({
+  id: '/addapps',
+  path: '/addapps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VoteIdRoute = VoteIdRouteImport.update({
+  id: '/vote/$id',
+  path: '/vote/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusSetRoute = StatusSetRouteImport.update({
+  id: '/status_/set',
+  path: '/status/set',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestDataRoute = RequestDataRouteImport.update({
+  id: '/request_/data',
+  path: '/request/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsIdRoute = AppsIdRouteImport.update({
+  id: '/apps/$id',
+  path: '/apps/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsIndexApplistDotjsonRoute = AppsIndexApplistDotjsonRouteImport.update({
+  id: '/apps/index/applist.json',
+  path: '/apps/index/applist.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BroadcastsImageIdRoute = BroadcastsImageIdRouteImport.update({
+  id: '/broadcasts/image/$id',
+  path: '/broadcasts/image/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsPreviewIdRoute = AppsPreviewIdRouteImport.update({
+  id: '/apps/preview/$id',
+  path: '/apps/preview/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsGypsB64Route = AppsGypsB64RouteImport.update({
+  id: '/apps/gyps/$b64',
+  path: '/apps/gyps/$b64',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsIconFGJ01IdRoute = AppsIconFGJ01IdRouteImport.update({
+  id: '/apps/icon/FGJ01/$id',
+  path: '/apps/icon/FGJ01/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/addapps': typeof AddappsRoute
+  '/broadcast': typeof BroadcastRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/request': typeof RequestRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/status': typeof StatusRoute
+  '/vote-maker': typeof VoteMakerRoute
+  '/apps/$id': typeof AppsIdRoute
+  '/request/data': typeof RequestDataRoute
+  '/status/set': typeof StatusSetRoute
+  '/vote/$id': typeof VoteIdRoute
+  '/apps/gyps/$b64': typeof AppsGypsB64Route
+  '/apps/preview/$id': typeof AppsPreviewIdRoute
+  '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
+  '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/addapps': typeof AddappsRoute
+  '/broadcast': typeof BroadcastRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/request': typeof RequestRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/status': typeof StatusRoute
+  '/vote-maker': typeof VoteMakerRoute
+  '/apps/$id': typeof AppsIdRoute
+  '/request/data': typeof RequestDataRoute
+  '/status/set': typeof StatusSetRoute
+  '/vote/$id': typeof VoteIdRoute
+  '/apps/gyps/$b64': typeof AppsGypsB64Route
+  '/apps/preview/$id': typeof AppsPreviewIdRoute
+  '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
+  '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/addapps': typeof AddappsRoute
+  '/broadcast': typeof BroadcastRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/request': typeof RequestRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/status': typeof StatusRoute
+  '/vote-maker': typeof VoteMakerRoute
+  '/apps/$id': typeof AppsIdRoute
+  '/request_/data': typeof RequestDataRoute
+  '/status_/set': typeof StatusSetRoute
+  '/vote/$id': typeof VoteIdRoute
+  '/apps/gyps/$b64': typeof AppsGypsB64Route
+  '/apps/preview/$id': typeof AppsPreviewIdRoute
+  '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
+  '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/addapps'
+    | '/broadcast'
+    | '/leaderboard'
+    | '/request'
+    | '/settings'
+    | '/sitemap.xml'
+    | '/status'
+    | '/vote-maker'
+    | '/apps/$id'
+    | '/request/data'
+    | '/status/set'
+    | '/vote/$id'
+    | '/apps/gyps/$b64'
+    | '/apps/preview/$id'
+    | '/broadcasts/image/$id'
+    | '/apps/index/applist.json'
+    | '/apps/icon/FGJ01/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/addapps'
+    | '/broadcast'
+    | '/leaderboard'
+    | '/request'
+    | '/settings'
+    | '/sitemap.xml'
+    | '/status'
+    | '/vote-maker'
+    | '/apps/$id'
+    | '/request/data'
+    | '/status/set'
+    | '/vote/$id'
+    | '/apps/gyps/$b64'
+    | '/apps/preview/$id'
+    | '/broadcasts/image/$id'
+    | '/apps/index/applist.json'
+    | '/apps/icon/FGJ01/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/addapps'
+    | '/broadcast'
+    | '/leaderboard'
+    | '/request'
+    | '/settings'
+    | '/sitemap.xml'
+    | '/status'
+    | '/vote-maker'
+    | '/apps/$id'
+    | '/request_/data'
+    | '/status_/set'
+    | '/vote/$id'
+    | '/apps/gyps/$b64'
+    | '/apps/preview/$id'
+    | '/broadcasts/image/$id'
+    | '/apps/index/applist.json'
+    | '/apps/icon/FGJ01/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AddappsRoute: typeof AddappsRoute
+  BroadcastRoute: typeof BroadcastRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  RequestRoute: typeof RequestRoute
+  SettingsRoute: typeof SettingsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StatusRoute: typeof StatusRoute
+  VoteMakerRoute: typeof VoteMakerRoute
+  AppsIdRoute: typeof AppsIdRoute
+  RequestDataRoute: typeof RequestDataRoute
+  StatusSetRoute: typeof StatusSetRoute
+  VoteIdRoute: typeof VoteIdRoute
+  AppsGypsB64Route: typeof AppsGypsB64Route
+  AppsPreviewIdRoute: typeof AppsPreviewIdRoute
+  BroadcastsImageIdRoute: typeof BroadcastsImageIdRoute
+  AppsIndexApplistDotjsonRoute: typeof AppsIndexApplistDotjsonRoute
+  AppsIconFGJ01IdRoute: typeof AppsIconFGJ01IdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vote-maker': {
+      id: '/vote-maker'
+      path: '/vote-maker'
+      fullPath: '/vote-maker'
+      preLoaderRoute: typeof VoteMakerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request': {
+      id: '/request'
+      path: '/request'
+      fullPath: '/request'
+      preLoaderRoute: typeof RequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broadcast': {
+      id: '/broadcast'
+      path: '/broadcast'
+      fullPath: '/broadcast'
+      preLoaderRoute: typeof BroadcastRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/addapps': {
+      id: '/addapps'
+      path: '/addapps'
+      fullPath: '/addapps'
+      preLoaderRoute: typeof AddappsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +349,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vote/$id': {
+      id: '/vote/$id'
+      path: '/vote/$id'
+      fullPath: '/vote/$id'
+      preLoaderRoute: typeof VoteIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status_/set': {
+      id: '/status_/set'
+      path: '/status/set'
+      fullPath: '/status/set'
+      preLoaderRoute: typeof StatusSetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request_/data': {
+      id: '/request_/data'
+      path: '/request/data'
+      fullPath: '/request/data'
+      preLoaderRoute: typeof RequestDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/$id': {
+      id: '/apps/$id'
+      path: '/apps/$id'
+      fullPath: '/apps/$id'
+      preLoaderRoute: typeof AppsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/index/applist.json': {
+      id: '/apps/index/applist.json'
+      path: '/apps/index/applist.json'
+      fullPath: '/apps/index/applist.json'
+      preLoaderRoute: typeof AppsIndexApplistDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broadcasts/image/$id': {
+      id: '/broadcasts/image/$id'
+      path: '/broadcasts/image/$id'
+      fullPath: '/broadcasts/image/$id'
+      preLoaderRoute: typeof BroadcastsImageIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/preview/$id': {
+      id: '/apps/preview/$id'
+      path: '/apps/preview/$id'
+      fullPath: '/apps/preview/$id'
+      preLoaderRoute: typeof AppsPreviewIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/gyps/$b64': {
+      id: '/apps/gyps/$b64'
+      path: '/apps/gyps/$b64'
+      fullPath: '/apps/gyps/$b64'
+      preLoaderRoute: typeof AppsGypsB64RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/icon/FGJ01/$id': {
+      id: '/apps/icon/FGJ01/$id'
+      path: '/apps/icon/FGJ01/$id'
+      fullPath: '/apps/icon/FGJ01/$id'
+      preLoaderRoute: typeof AppsIconFGJ01IdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AddappsRoute: AddappsRoute,
+  BroadcastRoute: BroadcastRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  RequestRoute: RequestRoute,
+  SettingsRoute: SettingsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StatusRoute: StatusRoute,
+  VoteMakerRoute: VoteMakerRoute,
+  AppsIdRoute: AppsIdRoute,
+  RequestDataRoute: RequestDataRoute,
+  StatusSetRoute: StatusSetRoute,
+  VoteIdRoute: VoteIdRoute,
+  AppsGypsB64Route: AppsGypsB64Route,
+  AppsPreviewIdRoute: AppsPreviewIdRoute,
+  BroadcastsImageIdRoute: BroadcastsImageIdRoute,
+  AppsIndexApplistDotjsonRoute: AppsIndexApplistDotjsonRoute,
+  AppsIconFGJ01IdRoute: AppsIconFGJ01IdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
