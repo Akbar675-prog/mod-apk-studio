@@ -51,7 +51,7 @@ function VerificationAdminPage() {
           <p className="mt-6 text-sm text-muted-foreground">Belum ada permintaan.</p>
         ) : (
           <div className="mt-6 space-y-3">
-            {(data ?? []).map((req) => (
+            {(data ?? []).map((req: any) => (
               <article key={req.id} className="m3-shadow-1 rounded-3xl bg-card p-5">
                 <div className="flex items-center gap-3">
                   <img

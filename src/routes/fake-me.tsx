@@ -69,12 +69,12 @@ function FakeMePage() {
             ) : (
               <div className="mt-4 space-y-3">
                 {(data ?? [])
-                  .filter((u) =>
+                  .filter((u: Row) =>
                     !q.trim()
                       ? true
                       : `${u.username} ${u.name} ${u.email ?? ""}`.toLowerCase().includes(q.trim().toLowerCase()),
                   )
-                  .map((u) => (
+                  .map((u: Row) => (
                     <UserRow
                       key={u.id}
                       user={u}
