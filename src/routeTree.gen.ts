@@ -14,6 +14,8 @@ import { Route as StatusRouteImport } from './routes/status'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RequestRouteImport } from './routes/request'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as BroadcastRouteImport } from './routes/broadcast'
 import { Route as AddappsRouteImport } from './routes/addapps'
@@ -52,6 +54,16 @@ const SettingsRoute = SettingsRouteImport.update({
 const RequestRoute = RequestRouteImport.update({
   id: '/request',
   path: '/request',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeaderboardRoute = LeaderboardRouteImport.update({
@@ -131,6 +143,8 @@ export interface FileRoutesByFullPath {
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -152,6 +166,8 @@ export interface FileRoutesByTo {
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -174,6 +190,8 @@ export interface FileRoutesById {
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -197,6 +215,8 @@ export interface FileRouteTypes {
     | '/addapps'
     | '/broadcast'
     | '/leaderboard'
+    | '/login'
+    | '/register'
     | '/request'
     | '/settings'
     | '/sitemap.xml'
@@ -218,6 +238,8 @@ export interface FileRouteTypes {
     | '/addapps'
     | '/broadcast'
     | '/leaderboard'
+    | '/login'
+    | '/register'
     | '/request'
     | '/settings'
     | '/sitemap.xml'
@@ -239,6 +261,8 @@ export interface FileRouteTypes {
     | '/addapps'
     | '/broadcast'
     | '/leaderboard'
+    | '/login'
+    | '/register'
     | '/request'
     | '/settings'
     | '/sitemap.xml'
@@ -261,6 +285,8 @@ export interface RootRouteChildren {
   AddappsRoute: typeof AddappsRoute
   BroadcastRoute: typeof BroadcastRoute
   LeaderboardRoute: typeof LeaderboardRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
   RequestRoute: typeof RequestRoute
   SettingsRoute: typeof SettingsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -312,6 +338,20 @@ declare module '@tanstack/react-router' {
       path: '/request'
       fullPath: '/request'
       preLoaderRoute: typeof RequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leaderboard': {
@@ -421,6 +461,8 @@ const rootRouteChildren: RootRouteChildren = {
   AddappsRoute: AddappsRoute,
   BroadcastRoute: BroadcastRoute,
   LeaderboardRoute: LeaderboardRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
   RequestRoute: RequestRoute,
   SettingsRoute: SettingsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
