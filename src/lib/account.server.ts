@@ -306,8 +306,23 @@ export async function listVerificationRequests(userId: string) {
   const { data: profiles } = ids.length
     ? await db.from("profiles").select("id, name, username, user_no, avatar_url, verified").in("id", ids)
     : { data: [] as any[] };
-  const map = new Map((profiles ?? []).map((p: any) => [p.id, p]));
-  return (data ?? []).map((r: any) => ({ ...r, profile: map.get(r.user_id) ?? null }));
+  const map = new Map<string, any>((profiles ?? []).map((p: any) => [p.id as string, p]));
+  return (data ?? []).map((r: any) => ({
+    id: r.id as string,
+    user_id: r.user_id as string,
+    reason: r.reason as string,
+    links: (r.links ?? null) as string | null,
+    status: r.status as string,
+    created_at: r.created_at as string,
+    profile: (map.get(r.user_id) ?? null) as {
+      id: string;
+      name: string;
+      username: string;
+      user_no: number;
+      avatar_url: string | null;
+      verified: boolean;
+    } | null,
+  }));
 }
 
 export async function decideVerification(userId: string, id: string, approve: boolean) {
