@@ -27,6 +27,8 @@ import { Route as StatusSetRouteImport } from './routes/status_.set'
 import { Route as RequestDataRouteImport } from './routes/request_.data'
 import { Route as AppsIdRouteImport } from './routes/apps.$id'
 import { Route as AppsIndexApplistDotjsonRouteImport } from './routes/apps.index.applist[.]json'
+import { Route as UsersIdProfileRouteImport } from './routes/users.$id.profile'
+import { Route as UPB64RouteImport } from './routes/u.p.$b64'
 import { Route as BroadcastsImageIdRouteImport } from './routes/broadcasts.image.$id'
 import { Route as AppsPreviewIdRouteImport } from './routes/apps.preview.$id'
 import { Route as AppsGypsB64RouteImport } from './routes/apps.gyps.$b64'
@@ -122,6 +124,16 @@ const AppsIndexApplistDotjsonRoute = AppsIndexApplistDotjsonRouteImport.update({
   path: '/apps/index/applist.json',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UsersIdProfileRoute = UsersIdProfileRouteImport.update({
+  id: '/users/$id/profile',
+  path: '/users/$id/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UPB64Route = UPB64RouteImport.update({
+  id: '/u/p/$b64',
+  path: '/u/p/$b64',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BroadcastsImageIdRoute = BroadcastsImageIdRouteImport.update({
   id: '/broadcasts/image/$id',
   path: '/broadcasts/image/$id',
@@ -164,6 +176,8 @@ export interface FileRoutesByFullPath {
   '/apps/gyps/$b64': typeof AppsGypsB64Route
   '/apps/preview/$id': typeof AppsPreviewIdRoute
   '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/u/p/$b64': typeof UPB64Route
+  '/users/$id/profile': typeof UsersIdProfileRoute
   '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
   '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
@@ -188,6 +202,8 @@ export interface FileRoutesByTo {
   '/apps/gyps/$b64': typeof AppsGypsB64Route
   '/apps/preview/$id': typeof AppsPreviewIdRoute
   '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/u/p/$b64': typeof UPB64Route
+  '/users/$id/profile': typeof UsersIdProfileRoute
   '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
   '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
@@ -213,6 +229,8 @@ export interface FileRoutesById {
   '/apps/gyps/$b64': typeof AppsGypsB64Route
   '/apps/preview/$id': typeof AppsPreviewIdRoute
   '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/u/p/$b64': typeof UPB64Route
+  '/users/$id/profile': typeof UsersIdProfileRoute
   '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
   '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
@@ -239,6 +257,8 @@ export interface FileRouteTypes {
     | '/apps/gyps/$b64'
     | '/apps/preview/$id'
     | '/broadcasts/image/$id'
+    | '/u/p/$b64'
+    | '/users/$id/profile'
     | '/apps/index/applist.json'
     | '/apps/icon/FGJ01/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -263,6 +283,8 @@ export interface FileRouteTypes {
     | '/apps/gyps/$b64'
     | '/apps/preview/$id'
     | '/broadcasts/image/$id'
+    | '/u/p/$b64'
+    | '/users/$id/profile'
     | '/apps/index/applist.json'
     | '/apps/icon/FGJ01/$id'
   id:
@@ -287,6 +309,8 @@ export interface FileRouteTypes {
     | '/apps/gyps/$b64'
     | '/apps/preview/$id'
     | '/broadcasts/image/$id'
+    | '/u/p/$b64'
+    | '/users/$id/profile'
     | '/apps/index/applist.json'
     | '/apps/icon/FGJ01/$id'
   fileRoutesById: FileRoutesById
@@ -312,6 +336,8 @@ export interface RootRouteChildren {
   AppsGypsB64Route: typeof AppsGypsB64Route
   AppsPreviewIdRoute: typeof AppsPreviewIdRoute
   BroadcastsImageIdRoute: typeof BroadcastsImageIdRoute
+  UPB64Route: typeof UPB64Route
+  UsersIdProfileRoute: typeof UsersIdProfileRoute
   AppsIndexApplistDotjsonRoute: typeof AppsIndexApplistDotjsonRoute
   AppsIconFGJ01IdRoute: typeof AppsIconFGJ01IdRoute
 }
@@ -444,6 +470,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppsIndexApplistDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/users/$id/profile': {
+      id: '/users/$id/profile'
+      path: '/users/$id/profile'
+      fullPath: '/users/$id/profile'
+      preLoaderRoute: typeof UsersIdProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/u/p/$b64': {
+      id: '/u/p/$b64'
+      path: '/u/p/$b64'
+      fullPath: '/u/p/$b64'
+      preLoaderRoute: typeof UPB64RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/broadcasts/image/$id': {
       id: '/broadcasts/image/$id'
       path: '/broadcasts/image/$id'
@@ -496,6 +536,8 @@ const rootRouteChildren: RootRouteChildren = {
   AppsGypsB64Route: AppsGypsB64Route,
   AppsPreviewIdRoute: AppsPreviewIdRoute,
   BroadcastsImageIdRoute: BroadcastsImageIdRoute,
+  UPB64Route: UPB64Route,
+  UsersIdProfileRoute: UsersIdProfileRoute,
   AppsIndexApplistDotjsonRoute: AppsIndexApplistDotjsonRoute,
   AppsIconFGJ01IdRoute: AppsIconFGJ01IdRoute,
 }
