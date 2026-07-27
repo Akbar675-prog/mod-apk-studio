@@ -204,44 +204,57 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const flush = useCallback(async () => {
     const target = langRef.current;
     if (target === SOURCE_LANG) return;
-    const batch = Array.from(pending.current).slice(0, 50);
-    if (batch.length === 0) return;
-    batch.forEach((b) => {
+    const all = Array.from(pending.current);
+    if (all.length === 0) return;
+    all.forEach((b) => {
       pending.current.delete(b);
       inFlight.current.add(b);
     });
     setLoading(true);
-    try {
-      const meta = findLanguage(target);
-      const res = await translateTextsFn({
-        data: { texts: batch, lang: target, langName: meta.name },
-      });
-      if (langRef.current !== target) return;
-      const next = { ...readCache(target) };
-      batch.forEach((text, i) => {
-        const out = res.translations[i];
-        if (out) {
-          next[text] = out;
-          failures.current.delete(text);
+    const meta = findLanguage(target);
+
+    // Split into groups and fire them all at once so the whole UI flips over
+    // in roughly the time of a single request instead of batch after batch.
+    const groups: string[][] = [];
+    for (let i = 0; i < all.length; i += 60) groups.push(all.slice(i, i + 60));
+
+    await Promise.all(
+      groups.map(async (batch) => {
+        try {
+          const res = await translateTextsFn({
+            data: { texts: batch, lang: target, langName: meta.name },
+          });
+          if (langRef.current !== target) return;
+          // Merge as soon as each group lands: text appears progressively.
+          setDict((prev) => {
+            const next = { ...prev };
+            batch.forEach((text, i) => {
+              const out = res.translations[i];
+              if (out) {
+                next[text] = out;
+                failures.current.delete(text);
+              }
+            });
+            writeCache(target, { ...readCache(target), ...next });
+            return next;
+          });
+        } catch {
+          if (langRef.current === target) {
+            batch.forEach((text) => {
+              const n = (failures.current.get(text) ?? 0) + 1;
+              failures.current.set(text, n);
+              if (n <= 2) pending.current.add(text);
+            });
+          }
+        } finally {
+          batch.forEach((b) => inFlight.current.delete(b));
         }
-      });
-      writeCache(target, next);
-      setDict(next);
-    } catch {
-      // Retry a failed batch up to 2 times so text doesn't get stuck in Indonesian.
-      if (langRef.current === target) {
-        batch.forEach((text) => {
-          const n = (failures.current.get(text) ?? 0) + 1;
-          failures.current.set(text, n);
-          if (n <= 2) pending.current.add(text);
-        });
-      }
-    } finally {
-      batch.forEach((b) => inFlight.current.delete(b));
-      setLoading(false);
-      if (pending.current.size > 0) {
-        timer.current = setTimeout(() => void flush(), 60);
-      }
+      }),
+    );
+
+    setLoading(false);
+    if (pending.current.size > 0) {
+      timer.current = setTimeout(() => void flush(), 30);
     }
   }, []);
 
@@ -255,7 +268,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       if ((failures.current.get(text) ?? 0) > 2) return;
       pending.current.add(text);
       if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => void flush(), 120);
+      timer.current = setTimeout(() => void flush(), 40);
     },
     [flush],
   );
