@@ -14,7 +14,12 @@ import { Route as StatusRouteImport } from './routes/status'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RequestRouteImport } from './routes/request'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as GetVerifiedRouteImport } from './routes/get-verified'
+import { Route as FakeMeRouteImport } from './routes/fake-me'
 import { Route as BroadcastRouteImport } from './routes/broadcast'
 import { Route as AddappsRouteImport } from './routes/addapps'
 import { Route as AboutRouteImport } from './routes/about'
@@ -22,8 +27,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as VoteIdRouteImport } from './routes/vote.$id'
 import { Route as StatusSetRouteImport } from './routes/status_.set'
 import { Route as RequestDataRouteImport } from './routes/request_.data'
+import { Route as DataGetVerifiedRouteImport } from './routes/data.get-verified'
 import { Route as AppsIdRouteImport } from './routes/apps.$id'
 import { Route as AppsIndexApplistDotjsonRouteImport } from './routes/apps.index.applist[.]json'
+import { Route as UsersIdProfileRouteImport } from './routes/users.$id.profile'
+import { Route as UPB64RouteImport } from './routes/u.p.$b64'
 import { Route as BroadcastsImageIdRouteImport } from './routes/broadcasts.image.$id'
 import { Route as AppsPreviewIdRouteImport } from './routes/apps.preview.$id'
 import { Route as AppsGypsB64RouteImport } from './routes/apps.gyps.$b64'
@@ -54,9 +62,34 @@ const RequestRoute = RequestRouteImport.update({
   path: '/request',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeaderboardRoute = LeaderboardRouteImport.update({
   id: '/leaderboard',
   path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetVerifiedRoute = GetVerifiedRouteImport.update({
+  id: '/get-verified',
+  path: '/get-verified',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FakeMeRoute = FakeMeRouteImport.update({
+  id: '/fake-me',
+  path: '/fake-me',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BroadcastRoute = BroadcastRouteImport.update({
@@ -94,6 +127,11 @@ const RequestDataRoute = RequestDataRouteImport.update({
   path: '/request/data',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DataGetVerifiedRoute = DataGetVerifiedRouteImport.update({
+  id: '/data/get-verified',
+  path: '/data/get-verified',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppsIdRoute = AppsIdRouteImport.update({
   id: '/apps/$id',
   path: '/apps/$id',
@@ -102,6 +140,16 @@ const AppsIdRoute = AppsIdRouteImport.update({
 const AppsIndexApplistDotjsonRoute = AppsIndexApplistDotjsonRouteImport.update({
   id: '/apps/index/applist.json',
   path: '/apps/index/applist.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersIdProfileRoute = UsersIdProfileRouteImport.update({
+  id: '/users/$id/profile',
+  path: '/users/$id/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UPB64Route = UPB64RouteImport.update({
+  id: '/u/p/$b64',
+  path: '/u/p/$b64',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BroadcastsImageIdRoute = BroadcastsImageIdRouteImport.update({
@@ -130,19 +178,27 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
+  '/fake-me': typeof FakeMeRoute
+  '/get-verified': typeof GetVerifiedRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/status': typeof StatusRoute
   '/vote-maker': typeof VoteMakerRoute
   '/apps/$id': typeof AppsIdRoute
+  '/data/get-verified': typeof DataGetVerifiedRoute
   '/request/data': typeof RequestDataRoute
   '/status/set': typeof StatusSetRoute
   '/vote/$id': typeof VoteIdRoute
   '/apps/gyps/$b64': typeof AppsGypsB64Route
   '/apps/preview/$id': typeof AppsPreviewIdRoute
   '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/u/p/$b64': typeof UPB64Route
+  '/users/$id/profile': typeof UsersIdProfileRoute
   '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
   '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
@@ -151,19 +207,27 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
+  '/fake-me': typeof FakeMeRoute
+  '/get-verified': typeof GetVerifiedRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/status': typeof StatusRoute
   '/vote-maker': typeof VoteMakerRoute
   '/apps/$id': typeof AppsIdRoute
+  '/data/get-verified': typeof DataGetVerifiedRoute
   '/request/data': typeof RequestDataRoute
   '/status/set': typeof StatusSetRoute
   '/vote/$id': typeof VoteIdRoute
   '/apps/gyps/$b64': typeof AppsGypsB64Route
   '/apps/preview/$id': typeof AppsPreviewIdRoute
   '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/u/p/$b64': typeof UPB64Route
+  '/users/$id/profile': typeof UsersIdProfileRoute
   '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
   '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
@@ -173,19 +237,27 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
+  '/fake-me': typeof FakeMeRoute
+  '/get-verified': typeof GetVerifiedRoute
   '/leaderboard': typeof LeaderboardRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/status': typeof StatusRoute
   '/vote-maker': typeof VoteMakerRoute
   '/apps/$id': typeof AppsIdRoute
+  '/data/get-verified': typeof DataGetVerifiedRoute
   '/request_/data': typeof RequestDataRoute
   '/status_/set': typeof StatusSetRoute
   '/vote/$id': typeof VoteIdRoute
   '/apps/gyps/$b64': typeof AppsGypsB64Route
   '/apps/preview/$id': typeof AppsPreviewIdRoute
   '/broadcasts/image/$id': typeof BroadcastsImageIdRoute
+  '/u/p/$b64': typeof UPB64Route
+  '/users/$id/profile': typeof UsersIdProfileRoute
   '/apps/index/applist.json': typeof AppsIndexApplistDotjsonRoute
   '/apps/icon/FGJ01/$id': typeof AppsIconFGJ01IdRoute
 }
@@ -196,19 +268,27 @@ export interface FileRouteTypes {
     | '/about'
     | '/addapps'
     | '/broadcast'
+    | '/fake-me'
+    | '/get-verified'
     | '/leaderboard'
+    | '/login'
+    | '/profile'
+    | '/register'
     | '/request'
     | '/settings'
     | '/sitemap.xml'
     | '/status'
     | '/vote-maker'
     | '/apps/$id'
+    | '/data/get-verified'
     | '/request/data'
     | '/status/set'
     | '/vote/$id'
     | '/apps/gyps/$b64'
     | '/apps/preview/$id'
     | '/broadcasts/image/$id'
+    | '/u/p/$b64'
+    | '/users/$id/profile'
     | '/apps/index/applist.json'
     | '/apps/icon/FGJ01/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -217,19 +297,27 @@ export interface FileRouteTypes {
     | '/about'
     | '/addapps'
     | '/broadcast'
+    | '/fake-me'
+    | '/get-verified'
     | '/leaderboard'
+    | '/login'
+    | '/profile'
+    | '/register'
     | '/request'
     | '/settings'
     | '/sitemap.xml'
     | '/status'
     | '/vote-maker'
     | '/apps/$id'
+    | '/data/get-verified'
     | '/request/data'
     | '/status/set'
     | '/vote/$id'
     | '/apps/gyps/$b64'
     | '/apps/preview/$id'
     | '/broadcasts/image/$id'
+    | '/u/p/$b64'
+    | '/users/$id/profile'
     | '/apps/index/applist.json'
     | '/apps/icon/FGJ01/$id'
   id:
@@ -238,19 +326,27 @@ export interface FileRouteTypes {
     | '/about'
     | '/addapps'
     | '/broadcast'
+    | '/fake-me'
+    | '/get-verified'
     | '/leaderboard'
+    | '/login'
+    | '/profile'
+    | '/register'
     | '/request'
     | '/settings'
     | '/sitemap.xml'
     | '/status'
     | '/vote-maker'
     | '/apps/$id'
+    | '/data/get-verified'
     | '/request_/data'
     | '/status_/set'
     | '/vote/$id'
     | '/apps/gyps/$b64'
     | '/apps/preview/$id'
     | '/broadcasts/image/$id'
+    | '/u/p/$b64'
+    | '/users/$id/profile'
     | '/apps/index/applist.json'
     | '/apps/icon/FGJ01/$id'
   fileRoutesById: FileRoutesById
@@ -260,19 +356,27 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AddappsRoute: typeof AddappsRoute
   BroadcastRoute: typeof BroadcastRoute
+  FakeMeRoute: typeof FakeMeRoute
+  GetVerifiedRoute: typeof GetVerifiedRoute
   LeaderboardRoute: typeof LeaderboardRoute
+  LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
   RequestRoute: typeof RequestRoute
   SettingsRoute: typeof SettingsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StatusRoute: typeof StatusRoute
   VoteMakerRoute: typeof VoteMakerRoute
   AppsIdRoute: typeof AppsIdRoute
+  DataGetVerifiedRoute: typeof DataGetVerifiedRoute
   RequestDataRoute: typeof RequestDataRoute
   StatusSetRoute: typeof StatusSetRoute
   VoteIdRoute: typeof VoteIdRoute
   AppsGypsB64Route: typeof AppsGypsB64Route
   AppsPreviewIdRoute: typeof AppsPreviewIdRoute
   BroadcastsImageIdRoute: typeof BroadcastsImageIdRoute
+  UPB64Route: typeof UPB64Route
+  UsersIdProfileRoute: typeof UsersIdProfileRoute
   AppsIndexApplistDotjsonRoute: typeof AppsIndexApplistDotjsonRoute
   AppsIconFGJ01IdRoute: typeof AppsIconFGJ01IdRoute
 }
@@ -314,11 +418,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RequestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/leaderboard': {
       id: '/leaderboard'
       path: '/leaderboard'
       fullPath: '/leaderboard'
       preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-verified': {
+      id: '/get-verified'
+      path: '/get-verified'
+      fullPath: '/get-verified'
+      preLoaderRoute: typeof GetVerifiedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fake-me': {
+      id: '/fake-me'
+      path: '/fake-me'
+      fullPath: '/fake-me'
+      preLoaderRoute: typeof FakeMeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/broadcast': {
@@ -370,6 +509,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RequestDataRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/data/get-verified': {
+      id: '/data/get-verified'
+      path: '/data/get-verified'
+      fullPath: '/data/get-verified'
+      preLoaderRoute: typeof DataGetVerifiedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apps/$id': {
       id: '/apps/$id'
       path: '/apps/$id'
@@ -382,6 +528,20 @@ declare module '@tanstack/react-router' {
       path: '/apps/index/applist.json'
       fullPath: '/apps/index/applist.json'
       preLoaderRoute: typeof AppsIndexApplistDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/users/$id/profile': {
+      id: '/users/$id/profile'
+      path: '/users/$id/profile'
+      fullPath: '/users/$id/profile'
+      preLoaderRoute: typeof UsersIdProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/u/p/$b64': {
+      id: '/u/p/$b64'
+      path: '/u/p/$b64'
+      fullPath: '/u/p/$b64'
+      preLoaderRoute: typeof UPB64RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/broadcasts/image/$id': {
@@ -420,19 +580,27 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AddappsRoute: AddappsRoute,
   BroadcastRoute: BroadcastRoute,
+  FakeMeRoute: FakeMeRoute,
+  GetVerifiedRoute: GetVerifiedRoute,
   LeaderboardRoute: LeaderboardRoute,
+  LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
   RequestRoute: RequestRoute,
   SettingsRoute: SettingsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StatusRoute: StatusRoute,
   VoteMakerRoute: VoteMakerRoute,
   AppsIdRoute: AppsIdRoute,
+  DataGetVerifiedRoute: DataGetVerifiedRoute,
   RequestDataRoute: RequestDataRoute,
   StatusSetRoute: StatusSetRoute,
   VoteIdRoute: VoteIdRoute,
   AppsGypsB64Route: AppsGypsB64Route,
   AppsPreviewIdRoute: AppsPreviewIdRoute,
   BroadcastsImageIdRoute: BroadcastsImageIdRoute,
+  UPB64Route: UPB64Route,
+  UsersIdProfileRoute: UsersIdProfileRoute,
   AppsIndexApplistDotjsonRoute: AppsIndexApplistDotjsonRoute,
   AppsIconFGJ01IdRoute: AppsIconFGJ01IdRoute,
 }

@@ -1,9 +1,11 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Menu, X, Search, Download, Info, MessageCircle, Settings as SettingsIcon, Gem, Trophy, Send, Activity } from "lucide-react";
+import { Menu, X, Search, Download, Info, MessageCircle, Settings as SettingsIcon, Gem, Trophy, Send, Activity, LogIn, ChevronRight } from "lucide-react";
 import { listAppsFn, type AppListItem } from "@/lib/apps.functions";
 import { versionLabel } from "@/lib/metadata.functions";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
+import { DEFAULT_AVATAR, useAccount } from "@/lib/use-account";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -25,6 +27,7 @@ export function AppHeader() {
   const [q, setQ] = useState("");
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { profile, userId } = useAccount();
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -217,6 +220,39 @@ export function AppHeader() {
                     sub="Ikuti channel"
                   />
                 </nav>
+              </div>
+
+              <div className="mt-6">
+                {userId && profile ? (
+                  <Link
+                    to="/profile"
+                    className="m3-shadow-1 flex items-center gap-3 rounded-3xl bg-card p-3 transition hover:-translate-y-0.5"
+                  >
+                    <img
+                      src={profile.avatar_url || DEFAULT_AVATAR}
+                      alt=""
+                      className="size-11 shrink-0 rounded-full bg-surface-variant object-cover"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <p className="truncate text-sm font-semibold">{profile.name}</p>
+                        {profile.verified && <VerifiedBadge className="size-4 shrink-0" />}
+                      </div>
+                      <p className="truncate text-xs text-muted-foreground">@{profile.username}</p>
+                    </div>
+                    <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition-colors hover:bg-primary-container"
+                  >
+                    <span className="inline-flex size-9 items-center justify-center rounded-xl bg-surface-variant">
+                      <LogIn className="size-4" />
+                    </span>
+                    Login
+                  </Link>
+                )}
               </div>
 
               <div className="mt-auto pt-6 text-xs text-muted-foreground">

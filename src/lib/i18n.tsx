@@ -230,9 +230,15 @@ export function I18nProvider({ children }: { children: ReactNode }) {
             const next = { ...prev };
             batch.forEach((text, i) => {
               const out = res.translations[i];
-              if (out) {
+              // Identical output means the gateway failed / returned the source:
+              // don't cache it, retry instead of freezing the UI in Indonesian.
+              if (out && out !== text) {
                 next[text] = out;
                 failures.current.delete(text);
+              } else {
+                const n = (failures.current.get(text) ?? 0) + 1;
+                failures.current.set(text, n);
+                if (n <= 2) pending.current.add(text);
               }
             });
             writeCache(target, { ...readCache(target), ...next });
