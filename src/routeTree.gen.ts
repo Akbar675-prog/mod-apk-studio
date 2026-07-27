@@ -18,6 +18,8 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as GetVerifiedRouteImport } from './routes/get-verified'
+import { Route as FakeMeRouteImport } from './routes/fake-me'
 import { Route as BroadcastRouteImport } from './routes/broadcast'
 import { Route as AddappsRouteImport } from './routes/addapps'
 import { Route as AboutRouteImport } from './routes/about'
@@ -25,6 +27,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as VoteIdRouteImport } from './routes/vote.$id'
 import { Route as StatusSetRouteImport } from './routes/status_.set'
 import { Route as RequestDataRouteImport } from './routes/request_.data'
+import { Route as DataGetVerifiedRouteImport } from './routes/data.get-verified'
 import { Route as AppsIdRouteImport } from './routes/apps.$id'
 import { Route as AppsIndexApplistDotjsonRouteImport } from './routes/apps.index.applist[.]json'
 import { Route as UsersIdProfileRouteImport } from './routes/users.$id.profile'
@@ -79,6 +82,16 @@ const LeaderboardRoute = LeaderboardRouteImport.update({
   path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GetVerifiedRoute = GetVerifiedRouteImport.update({
+  id: '/get-verified',
+  path: '/get-verified',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FakeMeRoute = FakeMeRouteImport.update({
+  id: '/fake-me',
+  path: '/fake-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BroadcastRoute = BroadcastRouteImport.update({
   id: '/broadcast',
   path: '/broadcast',
@@ -112,6 +125,11 @@ const StatusSetRoute = StatusSetRouteImport.update({
 const RequestDataRoute = RequestDataRouteImport.update({
   id: '/request_/data',
   path: '/request/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataGetVerifiedRoute = DataGetVerifiedRouteImport.update({
+  id: '/data/get-verified',
+  path: '/data/get-verified',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsIdRoute = AppsIdRouteImport.update({
@@ -160,6 +178,8 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
+  '/fake-me': typeof FakeMeRoute
+  '/get-verified': typeof GetVerifiedRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
@@ -170,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/status': typeof StatusRoute
   '/vote-maker': typeof VoteMakerRoute
   '/apps/$id': typeof AppsIdRoute
+  '/data/get-verified': typeof DataGetVerifiedRoute
   '/request/data': typeof RequestDataRoute
   '/status/set': typeof StatusSetRoute
   '/vote/$id': typeof VoteIdRoute
@@ -186,6 +207,8 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
+  '/fake-me': typeof FakeMeRoute
+  '/get-verified': typeof GetVerifiedRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
@@ -196,6 +219,7 @@ export interface FileRoutesByTo {
   '/status': typeof StatusRoute
   '/vote-maker': typeof VoteMakerRoute
   '/apps/$id': typeof AppsIdRoute
+  '/data/get-verified': typeof DataGetVerifiedRoute
   '/request/data': typeof RequestDataRoute
   '/status/set': typeof StatusSetRoute
   '/vote/$id': typeof VoteIdRoute
@@ -213,6 +237,8 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/addapps': typeof AddappsRoute
   '/broadcast': typeof BroadcastRoute
+  '/fake-me': typeof FakeMeRoute
+  '/get-verified': typeof GetVerifiedRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
@@ -223,6 +249,7 @@ export interface FileRoutesById {
   '/status': typeof StatusRoute
   '/vote-maker': typeof VoteMakerRoute
   '/apps/$id': typeof AppsIdRoute
+  '/data/get-verified': typeof DataGetVerifiedRoute
   '/request_/data': typeof RequestDataRoute
   '/status_/set': typeof StatusSetRoute
   '/vote/$id': typeof VoteIdRoute
@@ -241,6 +268,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/addapps'
     | '/broadcast'
+    | '/fake-me'
+    | '/get-verified'
     | '/leaderboard'
     | '/login'
     | '/profile'
@@ -251,6 +280,7 @@ export interface FileRouteTypes {
     | '/status'
     | '/vote-maker'
     | '/apps/$id'
+    | '/data/get-verified'
     | '/request/data'
     | '/status/set'
     | '/vote/$id'
@@ -267,6 +297,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/addapps'
     | '/broadcast'
+    | '/fake-me'
+    | '/get-verified'
     | '/leaderboard'
     | '/login'
     | '/profile'
@@ -277,6 +309,7 @@ export interface FileRouteTypes {
     | '/status'
     | '/vote-maker'
     | '/apps/$id'
+    | '/data/get-verified'
     | '/request/data'
     | '/status/set'
     | '/vote/$id'
@@ -293,6 +326,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/addapps'
     | '/broadcast'
+    | '/fake-me'
+    | '/get-verified'
     | '/leaderboard'
     | '/login'
     | '/profile'
@@ -303,6 +338,7 @@ export interface FileRouteTypes {
     | '/status'
     | '/vote-maker'
     | '/apps/$id'
+    | '/data/get-verified'
     | '/request_/data'
     | '/status_/set'
     | '/vote/$id'
@@ -320,6 +356,8 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AddappsRoute: typeof AddappsRoute
   BroadcastRoute: typeof BroadcastRoute
+  FakeMeRoute: typeof FakeMeRoute
+  GetVerifiedRoute: typeof GetVerifiedRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
@@ -330,6 +368,7 @@ export interface RootRouteChildren {
   StatusRoute: typeof StatusRoute
   VoteMakerRoute: typeof VoteMakerRoute
   AppsIdRoute: typeof AppsIdRoute
+  DataGetVerifiedRoute: typeof DataGetVerifiedRoute
   RequestDataRoute: typeof RequestDataRoute
   StatusSetRoute: typeof StatusSetRoute
   VoteIdRoute: typeof VoteIdRoute
@@ -407,6 +446,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/get-verified': {
+      id: '/get-verified'
+      path: '/get-verified'
+      fullPath: '/get-verified'
+      preLoaderRoute: typeof GetVerifiedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fake-me': {
+      id: '/fake-me'
+      path: '/fake-me'
+      fullPath: '/fake-me'
+      preLoaderRoute: typeof FakeMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/broadcast': {
       id: '/broadcast'
       path: '/broadcast'
@@ -454,6 +507,13 @@ declare module '@tanstack/react-router' {
       path: '/request/data'
       fullPath: '/request/data'
       preLoaderRoute: typeof RequestDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data/get-verified': {
+      id: '/data/get-verified'
+      path: '/data/get-verified'
+      fullPath: '/data/get-verified'
+      preLoaderRoute: typeof DataGetVerifiedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/$id': {
@@ -520,6 +580,8 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AddappsRoute: AddappsRoute,
   BroadcastRoute: BroadcastRoute,
+  FakeMeRoute: FakeMeRoute,
+  GetVerifiedRoute: GetVerifiedRoute,
   LeaderboardRoute: LeaderboardRoute,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
@@ -530,6 +592,7 @@ const rootRouteChildren: RootRouteChildren = {
   StatusRoute: StatusRoute,
   VoteMakerRoute: VoteMakerRoute,
   AppsIdRoute: AppsIdRoute,
+  DataGetVerifiedRoute: DataGetVerifiedRoute,
   RequestDataRoute: RequestDataRoute,
   StatusSetRoute: StatusSetRoute,
   VoteIdRoute: VoteIdRoute,
