@@ -15,6 +15,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RequestRouteImport } from './routes/request'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as BroadcastRouteImport } from './routes/broadcast'
@@ -59,6 +60,11 @@ const RequestRoute = RequestRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/broadcast': typeof BroadcastRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/broadcast': typeof BroadcastRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/broadcast': typeof BroadcastRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/request': typeof RequestRoute
   '/settings': typeof SettingsRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/broadcast'
     | '/leaderboard'
     | '/login'
+    | '/profile'
     | '/register'
     | '/request'
     | '/settings'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/broadcast'
     | '/leaderboard'
     | '/login'
+    | '/profile'
     | '/register'
     | '/request'
     | '/settings'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/broadcast'
     | '/leaderboard'
     | '/login'
+    | '/profile'
     | '/register'
     | '/request'
     | '/settings'
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   BroadcastRoute: typeof BroadcastRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
   RequestRoute: typeof RequestRoute
   SettingsRoute: typeof SettingsRoute
@@ -345,6 +358,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -462,6 +482,7 @@ const rootRouteChildren: RootRouteChildren = {
   BroadcastRoute: BroadcastRoute,
   LeaderboardRoute: LeaderboardRoute,
   LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
   RequestRoute: RequestRoute,
   SettingsRoute: SettingsRoute,
